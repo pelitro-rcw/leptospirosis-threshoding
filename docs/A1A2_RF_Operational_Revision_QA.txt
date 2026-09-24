@@ -1,0 +1,55 @@
+A1/A2 RF Operational Revision QA
+===============================
+
+Checks passed: 50/50
+
+[PASS] 18 R files present | 18
+[PASS] Lexical structure: R/00_config.R
+[PASS] Lexical structure: R/01_publication_theme.R
+[PASS] Lexical structure: R/02_detection_framework.R
+[PASS] Lexical structure: R/install_dependencies.R
+[PASS] Lexical structure: run_all.R
+[PASS] Lexical structure: scripts/00_self_check.R
+[PASS] Lexical structure: scripts/99_validate_outputs.R
+[PASS] Lexical structure: scripts/Stage1_eta_threshold_derivation_NCR.R
+[PASS] Lexical structure: scripts/Stage2_outbreak_threshold_drift_NCR_Lepto.R
+[PASS] Lexical structure: scripts/StageA_NCR_Lepto_Analysis.R
+[PASS] Lexical structure: scripts/StageB_Regional_Lepto_Analysis.R
+[PASS] Lexical structure: scripts/StageC_RF_Threshold_Derivation.R
+[PASS] Lexical structure: scripts/StageC_RF_Threshold_First_TA.R
+[PASS] Lexical structure: scripts/StageD_RF_Product1_NCR_Regional.R
+[PASS] Lexical structure: scripts/StageE_RF_Product2_NCR_Regional.R
+[PASS] Lexical structure: scripts/StageF_RF_Product3_NCR_Regional.R
+[PASS] Lexical structure: scripts/StageG_RF_Product4_NCR_Regional.R
+[PASS] Lexical structure: scripts/StageH_RF_mm_vs_Rt_HeadToHead.R
+[PASS] All run_all stage paths exist
+[PASS] Stage C upper-tail only
+[PASS] Stage C A1/A2 truth helpers
+[PASS] Stage C all onset derivation
+[PASS] Stage C truth Event = IsTrue
+[PASS] Stage C false alarm = outside A1/A2
+[PASS] Stage C false-alarm onset exports
+[PASS] NCR direct t-4..t-1 gate
+[PASS] Regional direct t-4..t-1 gate
+[PASS] Validator checks A1/A2 truth
+[PASS] Validator checks regional bootstrap schema
+[PASS] No right legends
+[PASS] No vertical legend box/direction
+[PASS] No angled x-axis labels
+[PASS] Stage C horizontal x-axis contract | 7
+[PASS] Stage C wrapped preceding labels
+[PASS] Stage C 2x2 products
+[PASS] Stage C 1x3 head-to-head
+[PASS] Publication legend horizontal/bottom
+[PASS] NCR RF/non-RF left y-axis shared
+[PASS] No magrittr pipes
+[PASS] No executable do.call(rbind)
+[PASS] 17 regions | 17
+[PASS] 102 region-years | 102
+[PASS] 52 case weeks each | 52
+[PASS] 52 RF weeks each | 52
+[PASS] Bundled geometry present | gadm41_PHL_1_pk.rds
+[PASS] Namespace dependencies covered
+[PASS] LOYO/LORO stability retained
+[PASS] Scope-specific RF handoff retained
+[PASS] Stage C NA plotting warnings mitigated

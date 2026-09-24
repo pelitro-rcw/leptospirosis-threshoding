@@ -1,0 +1,15 @@
+PER-REGION / RF-TO-ANCHOR REVISION
+==================================
+
+1. Stage C derives independent P1-P4 RF threshold triplets for each of the 17 regions.
+2. Stage I runs the NCR-style Stage A pipeline independently for every region:
+   DiseaseOnly + RF_Product1 + RF_Product2 + RF_Product3 + RF_Product4.
+3. P1/P3 remain RF preceding Constant TA; P2/P4 remain RF preceding Outbreak Threshold.
+4. Independent per-region RF thresholds use region-specific LOYO stability bounds.
+5. Pooled Stage B Regional RF runs now export dedicated RF-to-anchor trigger detail,
+   17-region RF-to-anchor summaries, and an RF-to-anchor geographic map.
+6. The pooled six-detector Figure B5 outputs remain diagnostic case-detector context.
+7. Stage C NCR and pooled Regional figures remain separate to prevent cross-scope crowding.
+8. Final validation requires 68 per-region Stage C threshold rows and 85 Stage I runs.
+9. Previous PackedSpatVector, bootstrap zero-trigger, row-binding, native-pipe,
+   panel-capacity, RF-operator, legend, and A1/A2 protections are retained.

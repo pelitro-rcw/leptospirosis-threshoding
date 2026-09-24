@@ -1,0 +1,43 @@
+RF Head-to-Head Upgrade QA
+==========================
+
+Checks passed: 38/38
+
+[PASS] All R files lexically balanced | []
+[PASS] 18 R files present | 18
+[PASS] Stage H writes RF_HeadToHead_NCR_AnchorPaired_ByYear.csv
+[PASS] Validator requires RF_HeadToHead_NCR_AnchorPaired_ByYear.csv
+[PASS] Stage H writes RF_HeadToHead_NCR_ExactPairedTests.csv
+[PASS] Validator requires RF_HeadToHead_NCR_ExactPairedTests.csv
+[PASS] Stage H writes RF_HeadToHead_Regional_AnchorPaired_ByRegion.csv
+[PASS] Validator requires RF_HeadToHead_Regional_AnchorPaired_ByRegion.csv
+[PASS] Stage H writes RF_HeadToHead_Regional_ClusterPairedTests.csv
+[PASS] Validator requires RF_HeadToHead_Regional_ClusterPairedTests.csv
+[PASS] Stage H writes RF_HeadToHead_DominanceProbability.csv
+[PASS] Validator requires RF_HeadToHead_DominanceProbability.csv
+[PASS] Stage H writes RF_HeadToHead_ThresholdStability.csv
+[PASS] Validator requires RF_HeadToHead_ThresholdStability.csv
+[PASS] Stage H writes RF_HeadToHead_BoundSensitivity.csv
+[PASS] Validator requires RF_HeadToHead_BoundSensitivity.csv
+[PASS] Stage H writes RF_HeadToHead_OverallDecision.csv
+[PASS] Validator requires RF_HeadToHead_OverallDecision.csv
+[PASS] P1 vs P3 Constant TA configured
+[PASS] P2 vs P4 Outbreak Threshold configured
+[PASS] NCR exact sign-flip inference present
+[PASS] Regional region-cluster exact inference present
+[PASS] Bonferroni correction present
+[PASS] Paired bootstrap CI present
+[PASS] Dominance probability present
+[PASS] Lower/point/upper bound sensitivity present
+[PASS] Threshold stability present
+[PASS] No-forced-winner class present
+[PASS] Three valid preference classes validator
+[PASS] Stage H self-check regression tokens present
+[PASS] run_all includes Stage H
+[PASS] run_all bootstrap parse gate present
+[PASS] No legacy magrittr pipes
+[PASS] No executable do.call(rbind) | []
+[PASS] README documents exact paired inference
+[PASS] README documents conservative decision
+[PASS] 17 regions and 102 complete region-years
+[PASS] All region-year case/rainfall coverage 52 weeks

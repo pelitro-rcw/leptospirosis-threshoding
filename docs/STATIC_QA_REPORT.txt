@@ -1,0 +1,206 @@
+ANALYTICAL PIPELINE LEPTOSPIROSIS - RF VISUAL/AXIS REVISION QA
+================================================================
+Revision focus:
+- RF-product NCR and Regional figures emphasize RF-related elements.
+- Products 1/2: right axis is antecedent rainfall in mm, never leptospirosis R(t).
+- Products 3/4: right axis is empirically derived rainfall STA/LTA R(t).
+- Weekly leptospirosis cases use light-blue bars in RF figures.
+- Adopted RF threshold is drawn in the same environmental units.
+- In-panel RF annotation reports the observed RF value, fixed upper-tail point threshold, lower/upper stability bounds, and operational status.
+- Disease-only NCR timing figures retain the prior Constant/Continuous TA R(t), activation-threshold, outbreak-threshold, and trigger-marker structure.
+- Regional RF outputs include yearly all-17-region panels and 17 region-specific multi-year panels.
+- RF legends are placed at the bottom, collected/wrapped where appropriate, and export margins are increased.
+- Subtitles and figure captions/footer text are suppressed at export.
+
+Static/source audit: 46/46 checks PASS.
+- 18 R files: balanced delimiters/quotes in lexical audit.
+- 0 legacy %>% operators.
+- 0 executable do.call(rbind, ...) calls.
+- PackedSpatVector -> terra::unwrap() geometry handling retained.
+- Current RF Products 1-4 enforce the upper-tail >= activation direction; non-upper-tail operators are rejected.
+- Final validator requires all 17 region-specific RF overlay figures for every RF product.
+- Preflight includes an RF-figure regression contract.
+
+Runtime note:
+This build environment does not provide an R/Rscript runtime or package repository,
+so full numerical execution cannot be performed here. The project itself executes
+R parse(), dependency/schema checks, geometry conversion checks, RF operator checks,
+and final required-output validation on the target R installation.
+
+- Anchor-specific RF display: P1/P3 retain the Constant TA disease anchor and suppress Outbreak Threshold elements; P2/P4 retain the Outbreak Threshold disease anchor and suppress Constant TA elements.
+- RF Product 1/2 right axes are rainfall mm; Product 3/4 right axes are rainfall STA/LTA R(t). Case R(t) is never used as the RF-product secondary axis.
+- Figure legends use bottom horizontal boxes with multi-row guides to reduce dead lateral space and cropping risk.
+Scope-correction audit (current package):
+- 18 R files: PASS
+- delimiter quote scan: PASS
+- no legacy pipe: PASS
+- no vertical legend box: PASS
+- no vertical legend direction: PASS
+- RF mm axis token NCR: PASS
+- RF Rt axis token NCR: PASS
+- RF mm axis token regional: PASS
+- RF Rt axis token regional: PASS
+- light blue cases NCR: PASS
+- light blue cases regional: PASS
+- disease-only old panel: PASS
+- RF dispatch separated: PASS
+- P2/P4 outbreak names: PASS
+- P1/P3 CTA names: PASS
+- anchor validator: PASS
+- horizontal legends StageA: PASS
+- horizontal legends StageB: PASS
+- global subtitle suppression absent: PASS
+- RF subtitles suppressed NCR: PASS
+- RF subtitles suppressed regional: PASS
+- RF operator normalization: PASS
+- all 17 canonical contract: PASS
+- workbook has 17 regions: PASS
+- 102 region-years: PASS
+- all region-years >=40 case weeks: PASS
+- all region-years >=40 rainfall weeks: PASS
+- Total: 27/27 PASS
+
+PARSE/BOOTSTRAP HOTFIX - 2026-08-18
+===================================
+Reported runtime failure addressed:
+  scripts/00_self_check.R: unexpected symbol at the regression token
+  legend.box = "horizontal"
+
+Root cause:
+- The literal contained nested unescaped double quotes inside a double-quoted
+  R string in two self-check expressions.
+
+Corrections:
+- Both self-check literals now use safe single-quoted R strings:
+    'legend.box = "horizontal"'
+- run_all.R now performs a bootstrap base-R parse(file=..., encoding="UTF-8")
+  across every project R file BEFORE Stage 0 is sourced or analytical outputs
+  are cleaned/created.
+- 00_self_check.R also parses all project R files using UTF-8 explicitly.
+
+Current source/data-contract audit: 14/14 PASS
+- 18 R files present: PASS
+- balanced strings/brackets/braces: PASS
+- no same-line malformed adjacent string tokens: PASS
+- zero legacy %>% operators: PASS
+- zero executable do.call(rbind, ...) calls: PASS
+- safely quoted horizontal-legend regression literal: PASS
+- bootstrap parse gate present in run_all.R: PASS
+- UTF-8 parse gate present in 00_self_check.R: PASS
+- all namespace-referenced non-base packages covered by dependency installer: PASS
+- critical scripts/data/geometry present: PASS
+- exactly 17 canonical regions in workbook: PASS
+- 102 evaluable region-year cells: PASS
+- 52 leptospirosis weeks in every evaluable region-year: PASS
+- 52 rainfall weeks in every evaluable region-year: PASS
+
+Runtime qualification:
+- This build environment does not contain R/Rscript, so numerical end-to-end
+  execution cannot be certified here. The package now guarantees that the
+  target R installation performs a complete project syntax parse before any
+  analytical stage is allowed to execute, and the existing final validator
+  still blocks a false successful completion when a stage/output fails.
+
+LEGEND LAYOUT HARDENING - 2026-08-18
+====================================
+Revision focus:
+- All publication legends default to bottom placement and horizontal reading order.
+- Long legends wrap into 2 horizontal rows where needed rather than extending beyond the 180-mm canvas.
+- RF-product legends use compact keys, compact inter-item spacing, and additional bottom margin.
+- NCR 2019/2024 comparison no longer uses the previous 26-pt inter-key/inter-label spacing.
+- NCR outbreak-threshold drift legend wraps the three requested entries into horizontal rows.
+- Regional six-detector map legend wraps detector keys into 2 horizontal rows.
+- Multipanel figures collect shared legends where already supported, with compact shared spacing.
+- Non-RF leptospirosis analytical figure structure is unchanged by this legend-only revision.
+
+Legend/static audit:
+- 18 R files scanned: PASS
+- Balanced quoted strings and (), [], {} in all R files: PASS
+- Global legend.position = bottom: PASS
+- Global legend.direction = horizontal: PASS
+- Global compact legend spacing: PASS
+- No executable legend.position = right: PASS
+- No executable legend.direction = vertical: PASS
+- NCR drift 2-row horizontal guide: PASS
+- Regional six-detector map 2-row horizontal guide: PASS
+- RF NCR long environmental guide 2-row horizontal: PASS
+- RF Regional long environmental guide 2-row horizontal: PASS
+- Oversized 26-pt NCR comparison legend spacing removed: PASS
+- 0 legacy %>% operators: PASS
+- 0 executable do.call(rbind, ...) calls: PASS
+- Workbook retains 17 regions x 6 evaluable years = 102 region-year cells: PASS
+- Every evaluable region-year contains 52 leptospirosis and 52 rainfall weeks: PASS
+
+Runtime qualification:
+- This build environment still has no R/Rscript runtime. The package's bootstrap
+  parse gate and 00_self_check.R now include legend-layout regression contracts,
+  and run_all.R must pass the existing final-output validator on the target R host.
+
+Legend de-duplication and completeness QA
+-----------------------------------------
+- NCR multi-year timing figures use one deterministic shared legend extracted with cowplot::get_legend().
+- Individual panel legends are suppressed during multi-panel assembly; patchwork guide collection is not used.
+- Disease-only timing legend is two horizontal rows: three line-series keys plus two trigger-marker keys.
+- Trigger legend categories are trained independently of observed trigger occurrence, preventing missing keys.
+- Regional detector map legend always includes all six canonical detector categories in two rows.
+- RF legends retain product-specific keys and wrap horizontally in compact rows.
+
+RF LOWER/POINT/UPPER BOUNDS REVISION
+- Stage C exports fixed lower, point, and upper thresholds for Products 1-4: PASS
+- Bounds use monotonic upper-tail no/precautionary/formal/strong activation: PASS
+- NCR weekly operational status export wired for all RF products: PASS
+- Regional weekly operational status export wired for all RF products: PASS
+- RF figures include point estimate plus lower/upper bounds on the RF axis: PASS
+- Final validator checks bound ordering and Stage C-to-rerun equality: PASS
+- 18 R files lexically balanced after revision: PASS
+- 17 regions x 6 evaluable years = 102 complete region-year cells confirmed: PASS
+
+FORMAL RF mm VS RF STA/LTA HEAD-TO-HEAD UPGRADE - 2026-08-19
+============================================================
+Revision focus:
+- P1 vs P3 formally tested on the Constant TA anchor.
+- P2 vs P4 formally tested on the Outbreak Threshold anchor.
+- NCR uses exact paired sign-flip inference by evaluable year.
+- Regional uses exact paired sign-flip inference by region (17 regions as clusters).
+- Paired percentile-bootstrap 95% confidence intervals are reported.
+- Eight prespecified metrics are Bonferroni-adjusted within anchor and spatial scale.
+- Bootstrap dominance probabilities are reported for NCR and Regional separately.
+- Threshold stability uses NCR LOYO and Regional LORO re-derived upper-tail thresholds.
+- Lower/point/upper balanced-accuracy comparisons are sensitivity diagnostics only.
+- Overall conclusion is data-driven and can return No clear empirical superiority.
+
+Current upgrade static/data-contract audit: 38/38 PASS.
+See docs/RF_HeadToHead_Upgrade_QA.txt for the individual checks.
+
+Runtime qualification:
+- This build environment does not contain R/Rscript, so numerical end-to-end execution
+  cannot be certified here. run_all.R retains the whole-project base-R parse bootstrap,
+  stage-aware error logging, and the final output validator now requires the new formal
+  NCR and Regional head-to-head inference, dominance, stability, bound-sensitivity and
+  overall-decision outputs before reporting FINAL OUTPUT VALIDATION: PASS.
+
+
+STAGE C DIRECT RF HEAD-TO-HEAD UPGRADE
+--------------------------------------
+- P1 vs P3 and P2 vs P4 direct threshold-derivation comparisons: PASS
+- NCR + pooled 17-region paired ROC comparison: PASS
+- 17-region exact paired inference + LORO stability: PASS
+- Stage C A-C head-to-head figure contracts: PASS
+- Final validator requires all Stage C head-to-head outputs: PASS
+
+CURRENT RF OPERATIONAL-CONCEPT OVERRIDE
+- Products 1-4 use upper-tail RF >= threshold only.
+- NCR point thresholds/bounds are NCR-derived with LOYO stability.
+- Regional point thresholds/bounds are pooled-17-region-derived with LORO stability.
+- Below lower bound = no activation; lower-to-point = precautionary RF trigger; point-to-upper = formal RF trigger; >= upper = strong RF trigger.
+- Point threshold search explicitly minimizes false-alarm rate among near-optimal Youden candidates.
+
+
+RF UPPER-TAIL / PROSPECTIVE FALSE-ALARM REVISION - 2026-08-19
+- All four RF products are constrained to upper-tail RF >= threshold activation.
+- An RF feature is calculated from t-4..t-1 at the disease anchor. The RF-supported disease anchor is true iff it lies in A1 OR A2; otherwise it is false.
+- Point estimates use a near-optimal Youden set with false-alarm rate as the first operating-point tie-breaker.
+- NCR thresholds are NCR-derived with LOYO bounds; Regional thresholds are pooled-17-region-derived with LORO bounds.
+- Products 3/4 re-select the empirical rainfall STA/LTA window inside every LOYO/LORO stability fold.
+- Stage C x-axis labels are horizontal with explicit two-/three-line wrapping, and Stage C figure wording states preceding/precedes.
+- Source/data-contract QA: see docs/CURRENT_REVISION_QA.txt.

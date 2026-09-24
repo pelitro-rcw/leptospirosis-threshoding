@@ -1,0 +1,34 @@
+Stage C Panel Layout Runtime Hotfix QA
+====================================
+
+Reported runtime error
+----------------------
+Need 3 panels, but together nrow and ncol only provide 2.
+
+Correction
+----------
+1. FigureC_RF_Threshold_Products no longer nests patchwork objects. The four
+   concrete ggplot panels (NCR mm, NCR R(t), Regional mm, Regional R(t)) are
+   passed directly to patchwork::wrap_plots with ncol = 2 and nrow = 2.
+2. Stage C RF head-to-head figures pass the three concrete ggplot panels
+   directly to patchwork::wrap_plots with ncol = 3 and nrow = 1.
+3. The old fig_products_ncr / fig_products_reg nested composition was removed.
+4. 00_self_check.R now verifies these explicit panel-capacity contracts before
+   Stage C executes.
+
+Static QA
+---------
+PASS: 18 R files passed quote/bracket/brace structural scanning.
+PASS: Stage C threshold-product list contains exactly four concrete plots.
+PASS: Stage C threshold-product layout provides exactly four cells (2 x 2).
+PASS: Stage C head-to-head list contains exactly three concrete plots.
+PASS: Stage C head-to-head layout provides exactly three cells (1 x 3).
+PASS: Old nested threshold-product composition removed.
+PASS: Old ambiguous head-to-head plot_layout composition removed.
+
+Runtime qualification
+---------------------
+The authoring container does not include an R/Rscript runtime, so numerical
+end-to-end execution cannot be certified here. run_all.R retains its bootstrap
+parse gate, and 00_self_check.R now contains the Stage C panel-capacity
+regression checks described above.

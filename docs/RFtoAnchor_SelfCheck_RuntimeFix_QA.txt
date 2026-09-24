@@ -1,0 +1,48 @@
+RF-to-Anchor Self-Check / Per-Region Runtime Hardening QA
+=========================================================
+
+Reported failure addressed
+--------------------------
+The preflight previously required the literal prose token:
+  RF-supported true-alarm PPV
+The plotted legend intentionally wraps that label across lines, while the
+actual analytical field is RF_Supported_PPV. A formatting-only difference
+therefore stopped the pipeline before analysis.
+
+Current contract
+----------------
+The self-check now validates structural analytical fields instead of human-
+facing legend prose:
+  RF_Supported_PPV
+  N_RF_Supported_True_Alarms
+  N_RF_Supported_False_Alarms
+  RF_to_Anchor_Trigger_Detail.csv
+  RF_to_Anchor_Regional_Summary.csv
+  FigureB7_RF_to_
+  P1/P3 -> Constant TA
+  P2/P4 -> Outbreak Threshold
+
+Runtime hardening added
+-----------------------
+1. Stage B now validates the RF-to-anchor summary schema before map export.
+2. Stage B validates P1/P3 -> Constant TA and P2/P4 -> Outbreak Threshold.
+3. Stage B rejects RF-supported PPV values outside [0,1].
+4. Stage I validates required PDF/PNG and CSV outputs immediately after every
+   independent region/product run rather than waiting until Stage 99.
+5. Stage 99 retains the complete 17-region and 85-run final-output contract.
+
+Static/source audit
+-------------------
+- 19 R source files structurally balanced: PASS
+- 13 run_all.R stage paths resolve: PASS
+- Reported RF-to-anchor self-check structural tokens present: PASS
+- Legacy %>% dependency: absent
+- Schema-fragile executable do.call(rbind, ...): absent
+- Bundled workbook and geometry retained
+
+Execution qualification
+-----------------------
+This build is source-, schema-, and contract-audited. The authoring container
+does not include R/Rscript, so numerical end-to-end R execution could not be
+performed here. The project itself performs an R-native parse gate before Stage
+0 and runtime/final-output validation during the target execution.

@@ -1,0 +1,60 @@
+Stage D-G RF Regional Bootstrap Runtime Fix QA
+==============================================
+
+Reported failure
+----------------
+Pipeline failed in scripts/StageD_RF_Product1_NCR_Regional.R:
+Must group by variables found in `.data`.
+Column `Method` is not found.
+
+Root cause
+----------
+In RF-gated regional reruns, a region/bootstrap replicate can legitimately have
+zero qualifying detector triggers. The regional bootstrap function returned
+NULL when its trigger-detail table was empty. Binding a collection of NULL/empty
+replicates could therefore produce a table without the required `Method` field,
+and the subsequent `group_by(Method)` failed.
+
+Corrections
+-----------
+1. Zero-trigger bootstrap replicates now return a complete six-method metric
+   schema rather than NULL.
+2. Stage B performs an explicit zero-trigger runtime regression test before the
+   17-region x 1000-replicate bootstrap starts.
+3. Every bootstrap region is required to contain exactly:
+      1000 replicates x 6 methods = 6000 rows.
+4. Every replicate is required to contain exactly one row per detector.
+5. Required bootstrap columns, including Method, are asserted before CI
+   summarisation.
+6. The final validator requires and re-checks
+   StageB_Regional_Bootstrap_Replicates.csv for the disease-only analysis and
+   every RF Product 1-4 regional rerun.
+7. REGIONAL_BOOT_N_CI = 1000 is now shared through R/00_config.R so Stage B and
+   the final validator cannot disagree about the expected replicate count.
+8. Cluster-bootstrap sensitivity was corrected so duplicate resampled years are
+   counted with their bootstrap multiplicity rather than collapsed with unique().
+9. The TAM calculation now uses the replicate function's trigger-detail input,
+   including the zero-trigger smoke-test override.
+
+Static/data QA performed in the authoring environment
+------------------------------------------------------
+- 18 R files scanned: balanced strings (), [], and {}.
+- 0 legacy %>% calls.
+- 0 executable do.call(rbind, ...) calls.
+- All run_all.R stage paths exist.
+- Required package namespaces are represented in the dependency installer
+  (excluding base-R namespaces and a comment-only false-positive token).
+- Workbook Regional Data contains all 17 canonical regions.
+- 102/102 evaluable region-year cells are present.
+- Each evaluable region-year has 52 LC_DOH observations and 52 RF_HDX observations.
+- Bootstrap runtime-contract source audit: PASS.
+
+Runtime limitation
+------------------
+The authoring container does not provide R/Rscript and its package repository
+access is unavailable. Therefore an actual numerical end-to-end R execution
+cannot be truthfully certified inside this environment. The packaged pipeline
+performs its own base-R parse gate, dependency/schema preflight, the new
+zero-trigger bootstrap runtime regression, per-region bootstrap completeness
+assertions, stage-aware error logging, and final-output validation when run in
+the target R environment.

@@ -1,0 +1,45 @@
+Stage C first A1/A2 qualifying trigger + scope-separated figures QA
+======================================================================
+
+Checks passed: 40/40
+
+[PASS] 18 R files present | 18
+[PASS] R lexical structure clean
+[PASS] First true selector
+[PASS] False comparator selector
+[PASS] Later true audit-only
+[PASS] First true CTA export
+[PASS] First true OT export
+[PASS] CTA trigger-week audit
+[PASS] OT trigger-week audit
+[PASS] Support audit
+[PASS] RF eligible year count
+[PASS] P1/P3 mapping
+[PASS] NCR threshold products
+[PASS] Regional threshold products
+[PASS] NCR window selection
+[PASS] Regional window selection
+[PASS] NCR bounds
+[PASS] Regional bounds
+[PASS] NCR CTA H2H
+[PASS] Regional CTA H2H
+[PASS] NCR OT H2H
+[PASS] Regional OT H2H
+[PASS] Horizontal axes
+[PASS] Stacked 3-panel H2H
+[PASS] No mixed-scope Stage C exports
+[PASS] Self-check first-anchor contract
+[PASS] Self-check scope split contract
+[PASS] Validator first-anchor uniqueness
+[PASS] Validator support audit
+[PASS] No legacy %>%
+[PASS] No executable do.call(rbind)
+[PASS] All run_all stages exist
+[PASS] Namespace packages covered by installer
+[PASS] Regional workbook schema
+[PASS] 17 regions | ['BARMM', 'CAR', 'MIMAROPA', 'NCR', 'REGION I', 'REGION II', 'REGION III', 'REGION IV-A', 'REGION IX', 'REGION V', 'REGION VI', 'REGION VII', 'REGION VIII', 'REGION X', 'REGION XI', 'REGION XII', 'REGION XIII']
+[PASS] 102 complete region-years | []
+[PASS] Bundled geometry present
+[PASS] Zero-trigger bootstrap regression retained
+[PASS] Shared 1000-replicate config retained
+[PASS] Self-check RF bound tokens satisfiable

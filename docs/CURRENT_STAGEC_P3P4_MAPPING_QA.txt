@@ -1,0 +1,43 @@
+Current Stage C P3/P4 Mapping QA
+================================
+
+Static/data-contract checks passed: 29/29
+
+Key checks
+----------
+[PASS] 18 R files present
+[PASS] All R files have balanced quoted strings, parentheses, brackets and braces
+[PASS] No legacy %>% operators
+[PASS] No executable do.call(rbind, ...) calls
+[PASS] Every run_all.R stage path exists
+[PASS] P1/P3 map to Constant-TA anchor truth Product_ID 1
+[PASS] P2/P4 map to Outbreak-Threshold anchor truth Product_ID 2
+[PASS] Old broken Product_ID == product_id anchor filter is absent
+[PASS] P3 Regional and NCR derivations use Constant-TA event keys
+[PASS] P4 Regional and NCR derivations use Outbreak-Threshold event keys
+[PASS] Stage C executes a runtime c(1,2,1,2) mapping assertion
+[PASS] 00_self_check.R protects the mapping contract
+[PASS] 99_validate_outputs.R requires and re-validates the mapping CSV
+[PASS] Stage C threshold-product figure has explicit 2x2 capacity
+[PASS] Stage C head-to-head figure has explicit 1x3 capacity
+[PASS] Stage C x-axis labels remain horizontal
+[PASS] No vertical/right legend settings in executable R files
+[PASS] 17 canonical regions present
+[PASS] 102 evaluable region-year cells present
+[PASS] 52 observed leptospirosis weeks in every evaluable region-year
+[PASS] 52 observed rainfall weeks in every evaluable region-year
+[PASS] Bundled regional geometry is present
+[PASS] Regional bootstrap zero-trigger regression protection remains present
+
+Root-cause resolution
+---------------------
+The failed P3/P4 derivation was caused by routing RF Product IDs 3 and 4 into an
+anchor-truth table that only stores disease-anchor truth under IDs 1 (Constant
+TA) and 2 (Outbreak Threshold). The corrected code explicitly maps:
+  P1 -> 1 (Constant TA)
+  P2 -> 2 (Outbreak Threshold)
+  P3 -> 1 (Constant TA)
+  P4 -> 2 (Outbreak Threshold)
+
+This preserves the existing A1/A2 truth framework and upper-tail RF threshold
+methodology while restoring the intended P3/P4 derivation inputs.

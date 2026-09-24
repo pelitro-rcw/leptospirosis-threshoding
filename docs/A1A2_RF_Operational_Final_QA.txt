@@ -1,0 +1,68 @@
+A1/A2 RF OPERATIONAL FINAL QA
+=============================
+
+Checks passed: 63/63
+
+[PASS] Lexical structure R/00_config.R
+[PASS] Lexical structure R/01_publication_theme.R
+[PASS] Lexical structure R/02_detection_framework.R
+[PASS] Lexical structure R/install_dependencies.R
+[PASS] Lexical structure run_all.R
+[PASS] Lexical structure scripts/00_self_check.R
+[PASS] Lexical structure scripts/99_validate_outputs.R
+[PASS] Lexical structure scripts/Stage1_eta_threshold_derivation_NCR.R
+[PASS] Lexical structure scripts/Stage2_outbreak_threshold_drift_NCR_Lepto.R
+[PASS] Lexical structure scripts/StageA_NCR_Lepto_Analysis.R
+[PASS] Lexical structure scripts/StageB_Regional_Lepto_Analysis.R
+[PASS] Lexical structure scripts/StageC_RF_Threshold_Derivation.R
+[PASS] Lexical structure scripts/StageC_RF_Threshold_First_TA.R
+[PASS] Lexical structure scripts/StageD_RF_Product1_NCR_Regional.R
+[PASS] Lexical structure scripts/StageE_RF_Product2_NCR_Regional.R
+[PASS] Lexical structure scripts/StageF_RF_Product3_NCR_Regional.R
+[PASS] Lexical structure scripts/StageG_RF_Product4_NCR_Regional.R
+[PASS] Lexical structure scripts/StageH_RF_mm_vs_Rt_HeadToHead.R
+[PASS] run_all path scripts/00_self_check.R
+[PASS] run_all path scripts/99_validate_outputs.R
+[PASS] run_all path scripts/Stage1_eta_threshold_derivation_NCR.R
+[PASS] run_all path scripts/Stage2_outbreak_threshold_drift_NCR_Lepto.R
+[PASS] run_all path scripts/StageA_NCR_Lepto_Analysis.R
+[PASS] run_all path scripts/StageB_Regional_Lepto_Analysis.R
+[PASS] run_all path scripts/StageC_RF_Threshold_Derivation.R
+[PASS] run_all path scripts/StageD_RF_Product1_NCR_Regional.R
+[PASS] run_all path scripts/StageE_RF_Product2_NCR_Regional.R
+[PASS] run_all path scripts/StageF_RF_Product3_NCR_Regional.R
+[PASS] run_all path scripts/StageG_RF_Product4_NCR_Regional.R
+[PASS] run_all path scripts/StageH_RF_mm_vs_Rt_HeadToHead.R
+[PASS] A1/A2 helpers
+[PASS] All anchor onsets exported
+[PASS] Truth is A1 OR A2
+[PASS] Upper-tail only
+[PASS] A1/A2 false-alarm metrics
+[PASS] Threshold candidate audit
+[PASS] NCR scope fixed
+[PASS] Regional scope fixed
+[PASS] LOYO and LORO
+[PASS] StageC layouts explicit
+[PASS] StageC x labels horizontal
+[PASS] StageC preceding wording
+[PASS] NCR direct antecedent RF gate
+[PASS] Regional direct antecedent RF gate
+[PASS] Validator A1/A2 truth
+[PASS] Selfcheck A1/A2 truth
+[PASS] Bootstrap zero-trigger regression
+[PASS] Bootstrap shared count
+[PASS] Shared NCR case y-axis
+[PASS] RF mm environmental axes
+[PASS] RF R(t) environmental axes
+[PASS] Publication legends bottom horizontal
+[PASS] No executable right legends
+[PASS] No executable vertical legend direction
+[PASS] No magrittr pipes
+[PASS] No executable base rbind aggregation
+[PASS] Bootstrap real R parse gate
+[PASS] No stale future-window RF truth wording
+[PASS] 17 regions | ['BARMM', 'CAR', 'MIMAROPA', 'NCR', 'REGION I', 'REGION II', 'REGION III', 'REGION IV-A', 'REGION IX', 'REGION V', 'REGION VI', 'REGION VII', 'REGION VIII', 'REGION X', 'REGION XI', 'REGION XII', 'REGION XIII']
+[PASS] 102 evaluable region-years | 102
+[PASS] 52 weeks/cases/rainfall each
+[PASS] Bundled geometry
+[PASS] Namespace dependencies covered

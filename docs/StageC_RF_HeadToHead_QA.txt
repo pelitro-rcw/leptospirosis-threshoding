@@ -1,0 +1,35 @@
+Stage C RF Threshold Head-to-Head QA
+=====================================
+
+Scope
+-----
+Direct derivation-stage comparison added inside StageC_RF_Threshold_Derivation.R:
+- Product 1 (RF mm) vs Product 3 (RF STA/LTA R(t)) for Constant TA.
+- Product 2 (RF mm) vs Product 4 (RF STA/LTA R(t)) for Outbreak Threshold.
+
+QA checks
+---------
+[PASS] Stage C compares P1 vs P3 on identical REGION/YR/WN rows.
+[PASS] Stage C compares P2 vs P4 on identical REGION/YR/WN rows.
+[PASS] NCR derivation-stage scope is exported.
+[PASS] Pooled 17-region derivation-stage scope is exported.
+[PASS] Paired DeLong AUC comparison is implemented after direction-standardizing predictors.
+[PASS] DeLong p-values are Bonferroni-adjusted across the two anchors within each scope.
+[PASS] Point-threshold sensitivity, specificity, balanced accuracy, Youden J, and PPV are compared without changing the empirically derived operators.
+[PASS] Regional paired inference uses exact sign-flip tests and paired bootstrap CIs.
+[PASS] Regional p-values are Bonferroni-adjusted within anchor across six prespecified metrics.
+[PASS] LORO AUC stability comparison is paired by held-out region.
+[PASS] Stage C emits a conservative derivation-stage conclusion without replacing Stage H operational inference.
+[PASS] A-C Stage C head-to-head figures are produced for both anchors.
+[PASS] Figure panels use explicit axis/facet labels and no redundant legend, preventing legend duplication/cropping.
+[PASS] All 18 project R files pass the external balanced-string/delimiter source audit.
+[PASS] No executable legacy %>% pipe is present.
+[PASS] No executable do.call(rbind, ...) aggregation is present.
+[PASS] Source workbook contains 17 regions.
+[PASS] Source workbook contains 102 evaluable region-year cells (17 regions x 6 years).
+[PASS] Every evaluable region-year has 52 observed leptospirosis weeks and 52 observed RF_HDX weeks.
+[PASS] Data-level trigger audit found Constant TA and Outbreak Threshold anchor events in all 17 regions.
+
+Interpretation
+--------------
+Stage C tests the rainfall representation at the threshold-derivation/discrimination level. Stage H remains the downstream operational head-to-head after the fixed RF thresholds are applied to NCR and Regional leptospirosis detection.

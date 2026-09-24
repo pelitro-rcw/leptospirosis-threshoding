@@ -1,0 +1,45 @@
+Stage C RF Anchor-Truth Mapping Runtime Fix
+===========================================
+
+Reported runtime failure
+------------------------
+StageC_RF_Threshold_Derivation.R stopped with:
+  Could not empirically select an upper-tail rainfall STA/LTA product for P3
+  in scope Regional (pooled 17 regions).
+
+Root cause
+----------
+The A1/A2 anchor-truth inventory is stored under Product_ID 1 for Constant TA
+and Product_ID 2 for Outbreak Threshold. The previous label function filtered
+that table with the RF product ID itself. Consequently P3 searched for
+Product_ID 3 and P4 searched for Product_ID 4, both of which are absent from
+the anchor-truth table. The P3/P4 derivation inputs were therefore empty even
+when valid Constant-TA/Outbreak-Threshold anchors existed.
+
+Correction
+----------
+Stage C now uses an explicit mapping:
+  P1 -> anchor truth Product 1 -> Constant TA
+  P2 -> anchor truth Product 2 -> Outbreak Threshold
+  P3 -> anchor truth Product 1 -> Constant TA
+  P4 -> anchor truth Product 2 -> Outbreak Threshold
+
+The mapping is implemented by rf_anchor_truth_product_id(). A runtime assertion
+executes before RF STA/LTA model selection and requires c(1,2,1,2). Stage C
+also exports RF_Product_Anchor_Truth_Mapping.csv. The final output validator
+re-opens that file and verifies the same four-row mapping.
+
+Static QA performed in the authoring environment
+-------------------------------------------------
+- All 18 R files scanned for balanced quotes, parentheses, brackets and braces.
+- No structural lexical errors found.
+- P3 Regional call uses event_key_cta and product_id 3.
+- P4 Regional call uses event_key_ot and product_id 4.
+- P3 NCR call uses ncr_event_key_cta and product_id 3.
+- P4 NCR call uses ncr_event_key_ot and product_id 4.
+- The old Product_ID == product_id anchor-truth filter is absent.
+- Stage C and final validator both contain mapping regression checks.
+
+This fix changes only RF-product-to-disease-anchor truth routing; it does not
+change the A1/A2 truth definition, rainfall upper-tail rule, RF threshold
+selection objective, or downstream detector metrics.

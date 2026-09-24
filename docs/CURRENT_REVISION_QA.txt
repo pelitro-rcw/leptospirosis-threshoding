@@ -1,0 +1,39 @@
+CURRENT REVISION QA — A1/A2 OPERATIONAL RF FRAMEWORK
+=====================================================
+
+Conceptual contract
+-------------------
+[PASS] RF activation is upper-tail only: RF >= adopted threshold.
+[PASS] RF feature excludes the disease-trigger week and uses antecedent t-4..t-1 information.
+[PASS] Constant TA and Outbreak Threshold onset events are classified against the established leptospirosis A1/A2 reference framework.
+[PASS] A1 is the 4–8 week pre-peak actionable window.
+[PASS] A2 is the contiguous period containing the peak and at least 70% of annual leptospirosis burden.
+[PASS] A disease-anchor onset is a true alarm iff it falls in A1 OR A2; otherwise it is a false alarm.
+[PASS] RF threshold selection uses A1/A2-defined true/false disease-anchor onsets, not a separate future-window truth definition.
+[PASS] Low rainfall below the lower operational bound cannot be labelled a strong RF trigger.
+[PASS] Lower/point/upper RF thresholds are fixed within scope and interpreted as no / precautionary / formal / strong activation bands.
+
+Scope and validation
+--------------------
+[PASS] NCR RF thresholds are derived from NCR and validated with leave-one-year-out stability.
+[PASS] Regional RF thresholds are derived from the pooled 17-region framework and validated with leave-one-region-out stability.
+[PASS] RF STA/LTA window selection is empirically derived from rainfall rather than borrowed from leptospirosis case R(t).
+[PASS] Four RF products remain distinct: P1 mm→Constant TA, P2 mm→Outbreak Threshold, P3 RF R(t)→Constant TA, P4 RF R(t)→Outbreak Threshold.
+[PASS] Stage C and Stage H retain RF-mm versus RF-R(t) head-to-head comparisons for each disease anchor.
+
+Runtime protections retained
+----------------------------
+[PASS] Whole-project R parse bootstrap occurs before analytical stages in run_all.R.
+[PASS] Stage B zero-trigger bootstrap regression protects the six-method Method schema.
+[PASS] Regional bootstrap replicate structure is validated for all six detectors.
+[PASS] Stage C figure capacity is explicit (2x2 threshold products; 1x3 head-to-head).
+[PASS] Final output validation checks Stage C A1/A2 onset inventories, RF handoffs, NCR/Regional products, bootstrap schemas and head-to-head outputs.
+
+Figure contract
+---------------
+[PASS] Stage C x-axis labels are horizontal and wrapped for long labels.
+[PASS] Stage C labels explicitly use preceding/preceding wording for RF-to-anchor relations.
+[PASS] Publication legends are bottom-positioned, horizontal and compact.
+[PASS] NCR RF and non-RF weekly leptospirosis panels use the shared NCR case-axis ceiling.
+[PASS] RF-mm products use rainfall mm on the environmental axis; RF-R(t) products use rainfall STA/LTA R(t).
+[PASS] Figure legends are deterministic/deduplicated for the principal NCR timing multipanels and regional detector map.

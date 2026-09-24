@@ -1,0 +1,59 @@
+Per-region / RF-to-anchor revision QA
+=========================================
+Checks passed: 55/55
+
+[PASS] All R source files structurally balanced | 19 files
+[PASS] No legacy magrittr pipe
+[PASS] No executable do.call(rbind)
+[PASS] run_all executes Stage I after Stage C
+[PASS] run_all resets base NCR mode
+[PASS] Stage A parameterized by region
+[PASS] Stage A independent output tree
+[PASS] Stage A gets independent RF thresholds
+[PASS] Stage C derives per-region threshold table
+[PASS] Stage C requires 4 products x 17
+[PASS] Per-region bounds are LOYO
+[PASS] P1/P3 anchor Constant TA
+[PASS] P2/P4 anchor Outbreak Threshold
+[PASS] First A1/A2 qualifying trigger retained
+[PASS] Outside A1/A2 retained as false comparator
+[PASS] Stage C separate figure FigureC_NCR_RF_Threshold_Products
+[PASS] Stage C separate figure FigureC_Regional_RF_Threshold_Products
+[PASS] Stage C separate figure FigureC_NCR_RF_STA_LTA_Window_Selection
+[PASS] Stage C separate figure FigureC_Regional_RF_STA_LTA_Window_Selection
+[PASS] Stage C separate figure FigureC_NCR_RF_Operational_Threshold_Bounds
+[PASS] Stage C separate figure FigureC_Regional_RF_Operational_Threshold_Bounds
+[PASS] Stage C x-axis labels horizontal | 7
+[PASS] Regional RF-to-anchor detail
+[PASS] Regional RF-to-anchor summary
+[PASS] Regional RF-to-anchor map
+[PASS] Regional RF product output guide
+[PASS] RF map uses intended anchor
+[PASS] RF map legend bottom horizontal
+[PASS] Stage I loops 17 regions
+[PASS] Stage I loops disease-only + four RF
+[PASS] Stage I requires 85 runs
+[PASS] Canonical 17 shared in config
+[PASS] IndependentRegion supported in config
+[PASS] Validator checks 68 per-region threshold rows
+[PASS] Validator checks 85 Stage I runs
+[PASS] Validator checks RF-to-anchor map
+[PASS] Dataset has 17 regions | ['BARMM', 'CAR', 'MIMAROPA', 'NCR', 'REGION I', 'REGION II', 'REGION III', 'REGION IV-A', 'REGION IX', 'REGION V', 'REGION VI', 'REGION VII', 'REGION VIII', 'REGION X', 'REGION XI', 'REGION XII', 'REGION XIII']
+[PASS] Dataset has 102 evaluable region-years | 102
+[PASS] All evaluable region-years have 52 case weeks
+[PASS] All evaluable region-years have 52 RF weeks
+[PASS] Installer includes readxl
+[PASS] Installer includes dplyr
+[PASS] Installer includes tidyr
+[PASS] Installer includes purrr
+[PASS] Installer includes ggplot2
+[PASS] Installer includes cowplot
+[PASS] Installer includes patchwork
+[PASS] Installer includes pROC
+[PASS] Installer includes readr
+[PASS] Installer includes sf
+[PASS] Installer includes terra
+[PASS] Installer includes ggrepel
+[PASS] Regional bootstrap zero-trigger regression retained
+[PASS] Regional bootstrap schema validation retained
+[PASS] PackedSpatVector unwrap retained
